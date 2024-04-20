@@ -110,7 +110,7 @@ blockquote {
   background: rgba(127, 127, 127, 0.1);
 }
 
-.history-item > blockquote {
+.history-item>blockquote {
   flex-grow: 1;
   margin: 0;
 }
