@@ -1,6 +1,9 @@
 {
   "type": "module",
   "scripts": {
+    "nodemon": "nodemon http-server.js",
+    "tailwind": "npx tailwindcss -i ./input.css -o ./utils/output.css --watch",
+    "dev": "npm run nodemon && npm run tailwind",
     "start": "nodemon http-server.js",
     "http-server": "node http-server.js"
   },

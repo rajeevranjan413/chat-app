@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="utils/main.css" />
+    <link rel="stylesheet" href="utils/output.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css" />
+    <title>Generative AI - Chat</title>
+</head>
+
+<body>
+
+
+    <!-- <div class="bg-green-600container">
+        <div id="chat-history"></div>
+    </div> -->
+
+    <div class="overflow-hidden h-screen w-screen bg-[#202124] text-white">
+        <div class="h-[10%] my-auto">
+
+            <header>Generative AI - Chat</header>
+        </div>
+        <div class="relative h-[90%] mt-1 md:flex">
+
+            <div class=" md:w-1/2 w-full h-full pt-[20px] px-[40px]">
+                <div class="max-w-[540px] h-[400px] mx-auto ">
+                    <div>
+                        <div class="grid place-items-center  mb-4">
+                            <select value="C++" class="bg-black px-5 py-2 outline-none rounded" name="" id="lang">
+
+                                <option value="C++">C++</option>
+                                <option value="JS">JS</option>
+                                <option value="Java">Java</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="rounded h-full border border-[#0c6591]">
+                        <textarea id="prompt" class=" p-4 bg-[#2a2b2e] w-full h-full outline-none"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class=" grid place-items-center ">
+                <button id="btn" type="submit" class="rounded bg-black px-6 py-4">Convert</button>
+            </div>
+
+            <div class=" md:w-1/2 w-full h-full pt-[20px] px-[40px]">
+                <div class="max-w-[540px] h-[400px] mx-auto ">
+                    <div>
+                        <div class="grid place-items-center  mb-4">
+                            <select class="bg-black px-5 py-2 outline-none rounded" name="" id="">
+                                <option value="C++">C++</option>
+                                <option value="JS">JS</option>
+                                <option value="Java">Java</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class=" h-full border rounded border-[#0c6591]">
+                        <div id="output" class="grid place-items-center p-4 bg-[#2a2b2e] w-full h-full outline-none">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+
+        console.log("hello")
+        import {
+            getGenerativeModel,
+            scrollToDocumentBottom,
+            updateUI,
+        } from "./utils/shared.js";
+        const langPromt = document.querySelector("#lang")
+        const promptInput = document.querySelector("#prompt");
+        const outputEle = document.querySelector("#output")
+        let chat;
+
+
+        document
+            .querySelector("#btn")
+            .addEventListener("click", async (event) => {
+                console.log("onclick")
+
+                if (!chat) {
+                    const model = await getGenerativeModel({ model: "gemini-pro" });
+                    chat = model.startChat({
+                        generationConfig: {
+                            maxOutputTokens: 100,
+                        },
+                    });
+                }
+                console.log(promptInput.value, langPromt.value)
+                const userMessage = `convert the problem statement "${promptInput.value}" into "${langPromt.value}" programming language code with proper comments and indentation`;
+                console.log(userMessage)
+                promptInput.value = "";
+                langPromt.value = '';
+
+
+
+                await updateUI(
+                    outputEle,
+                    () => chat.sendMessageStream(userMessage),
+                    true,
+                );
+            });
+    </script>
+</body>
+
+</html>
