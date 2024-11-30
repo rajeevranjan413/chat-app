@@ -4,12 +4,7 @@
 import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
 import { marked } from "https://esm.run/marked";
 
-/**
- * Returns a model instance.
- *
- * @param {GoogleGenerativeAI.ModelParams} params
- * @returns {GoogleGenerativeAI.GenerativeModel}
- */
+
 export async function getGenerativeModel(params) {
   // Fetch API key from server
   // If you need a new API key, get it from https://makersuite.google.com/app/apikey
