@@ -15,12 +15,7 @@ export async function getGenerativeModel(params) {
   return genAI.getGenerativeModel(params);
 }
 
-/**
- * Converts a File object to a GoogleGenerativeAI.Part object.
- *
- * @param {Blob} file
- * @returns {GoogleGenerativeAI.Part}
- */
+
 export async function fileToGenerativePart(file) {
   const base64EncodedDataPromise = new Promise((resolve) => {
     const reader = new FileReader();
