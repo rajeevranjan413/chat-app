@@ -42,7 +42,7 @@ export async function updateUI(resultEl, getResult, streaming) {
     if (streaming) {
       resultEl.innerText = "";
       for await (const chunk of result.stream) {
-        // Get first candidate's current text chunk
+       
         const chunkText = chunk.text();
         text += chunkText;
         resultEl.innerHTML = marked.parse(text);
