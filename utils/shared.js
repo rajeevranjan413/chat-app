@@ -33,13 +33,6 @@ export function scrollToDocumentBottom() {
   scrollingElement.scrollTop = scrollingElement.scrollHeight;
 }
 
-/**
- * Updates the `resultEl` with parsed markdown text returned by a `getResult()` call.
- *
- * @param {HTMLElement}} resultEl
- * @param {() => Promise<GoogleGenerativeAI.GenerateContentResponse>} getResult
- * @param {boolean} streaming
- */
 export async function updateUI(resultEl, getResult, streaming) {
   resultEl.className = "loading";
   let text = "";
