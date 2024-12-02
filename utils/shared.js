@@ -11,7 +11,7 @@ export async function getGenerativeModel(params) {
 
   const genAI = new GoogleGenerativeAI(API_KEY);
 
-  // For text-only inputs, use the gemini-pro model
+
   return genAI.getGenerativeModel(params);
 }
 
