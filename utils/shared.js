@@ -53,7 +53,7 @@ export async function updateUI(resultEl, getResult, streaming) {
       text = response.text();
     }
 
-    resultEl.className = ""; // Remove .loading class
+    resultEl.className = "";
   } catch (err) {
     text += "\n\n> " + err;
     resultEl.className = "error";
