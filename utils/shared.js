@@ -27,9 +27,7 @@ export async function fileToGenerativePart(file) {
   };
 }
 
-/**
- * Scrolls the document all the way to the bottom.
- */
+
 export function scrollToDocumentBottom() {
   const scrollingElement = document.scrollingElement || document.body;
   scrollingElement.scrollTop = scrollingElement.scrollHeight;
